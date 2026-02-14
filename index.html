@@ -11,12 +11,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <!-- Bubble Background -->
+<div class="bubble-bg" id="bubbleBg"></div>
+
+
 <!-- Loading Screen -->
 <div class="loading-screen" id="loadingScreen">
   <div class="loader">
@@ -30,40 +34,170 @@
   <div class="nav-container">
     <div class="logo">
       <i class="fas fa-landmark"></i>
-      <span>FUTURE MUSEUM</span>
+      <span>HeritEdge</span>
     </div>
-    <div class="nav-controls">
-      <button class="nav-btn" id="tourBtn"><i class="fas fa-play"></i> Auto Tour</button>
-      <button class="nav-btn" id="themeBtn"><i class="fas fa-moon"></i> Theme</button>
-      <button class="nav-btn" id="musicBtn"><i class="fas fa-volume-up"></i> Music</button>
-    </div>
+   <div class="nav-controls">
+
+  <!-- 🔍 Search -->
+  <div class="search-wrapper">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search artifacts..."
+      autocomplete="off"
+    />
+    <div class="search-suggestions" id="searchSuggestions"></div>
+  </div>
+
+  <!-- 📚 Library -->
+  <button class="nav-btn library-btn" id="libraryBtn">
+    <i class="fas fa-book"></i>
+  </button>
+
+  <button class="nav-btn" id="tourBtn">
+    <i class="fas fa-play"></i> Auto Tour
+  </button>
+
+  <button class="nav-btn" id="virtualMuseumBtn">
+    <i class="fas fa-vr-cardboard"></i> Virtual Museum
+  </button>
+
+</div>
+
+
   </div>
 </nav>
 
 <!-- Main Header -->
-<header class="hero">
-  <div class="hero-content">
-    <h1 class="title">IMMERSIVE 3D MUSEUM</h1>
-    <p class="subtitle">Explore Ancient Artifacts in Virtual Space • Hover • Drag • Interact</p>
-    <div class="stats">
-      <div class="stat-item">
-        <i class="fas fa-cube"></i>
-        <span>16 3D Models</span>
+<header class="hero hero-3d">
+  <div class="hero-inner">
+
+    <!-- LEFT: TEXT -->
+    <div class="hero-content">
+      <h1 class="title hero-anim anim-title">HeritEdge</h1>
+      <p class="subtitle hero-anim anim-subtitle" id="heroSubtitle">
+  Explore Ancient Civilizations in 3D
+</p>
+
+      <div class="hero-actions hero-anim anim-actions">
+  <button class="hero-btn primary" id="startExperienceBtn">
+    ▶ Start Museum Experience
+  </button>
+
+  <button class="hero-btn secondary" id="startTourHeroBtn">
+    🎧 Start Guided Tour
+  </button>
+</div>
+
+
+      <div class="stats">
+        <div class="stat-item">
+          <i class="fas fa-cube"></i>
+          <span>16 3D Models</span>
+        </div>
+        <div class="stat-item">
+          <i class="fas fa-history"></i>
+          <span>500 BC - 2024 AD</span>
+        </div>
+        <div class="stat-item">
+          <i class="fas fa-headphones"></i>
+          <span>Audio Guides</span>
+        </div>
       </div>
-      <div class="stat-item">
-        <i class="fas fa-history"></i>
-        <span>500 BC - 2024 AD</span>
-      </div>
-      <div class="stat-item">
-        <i class="fas fa-headphones"></i>
-        <span>Audio Guides</span>
-      </div>
+    </div>
+
+    <!-- RIGHT: 3D MODEL -->
+    <div class="hero-model hero-anim anim-model">
+    <model-viewer
+  src="top_artifact.glb"
+
+  auto-rotate
+  rotation-per-second="6deg"
+  style="
+    width: 100%;
+    height: 420px;
+    background: transparent;
+  ">
+</model-viewer>
     </div>
   </div>
   <div class="scroll-indicator">
     <i class="fas fa-chevron-down"></i>
   </div>
+
 </header>
+<section class="era-gateway" id="eraGateway">
+  <h2 class="section-title">Choose Your Era</h2>
+
+  <div class="era-cards">
+    <div class="era-card" data-era="ancient">
+      <h3>Ancient</h3>
+      <p>500 BC – 500 AD</p>
+    </div>
+
+    <div class="era-card" data-era="medieval">
+      <h3>Medieval</h3>
+      <p>900 AD – 1400 AD</p>
+    </div>
+
+    <div class="era-card" data-era="modern">
+      <h3>Modern</h3>
+      <p>1500 AD – 1950 AD</p>
+    </div>
+
+    <div class="era-card" data-era="futuristic">
+      <h3>Futuristic</h3>
+      <p>2000 AD – Beyond</p>
+    </div>
+  </div>
+  
+</section>
+<!-- Featured Artifacts -->
+<section class="featured-section" id="featuredArtifacts">
+  <h2 class="section-title">Featured Artifacts</h2>
+  <p class="section-subtitle">
+    Curated highlights from across civilizations
+  </p>
+
+  <div class="featured-grid">
+    <!-- FEATURED 1 -->
+    <div class="featured-card" data-id="1">
+      <img src="a1.png" alt="Ancient Sculpture">
+      <div class="featured-info">
+        <h3>Ancient Sculpture</h3>
+        <span>500 BC • Greece</span>
+      </div>
+    </div>
+
+    <!-- FEATURED 2 -->
+    <div class="featured-card" data-id="3">
+      <img src="a3.png" alt="Egyptian Sarcophagus">
+      <div class="featured-info">
+        <h3>Egyptian Sarcophagus</h3>
+        <span>1300 BC • Egypt</span>
+      </div>
+    </div>
+
+    <!-- FEATURED 3 -->
+    <div class="featured-card" data-id="10">
+      <img src="a10.png" alt="Renaissance Frame">
+      <div class="featured-info">
+        <h3>Renaissance Frame</h3>
+        <span>1500 AD • Italy</span>
+      </div>
+    </div>
+
+    <!-- FEATURED 4 -->
+    <div class="featured-card" data-id="15">
+      <img src="a15.png" alt="AI Sculpture">
+      <div class="featured-info">
+        <h3>AI-Generated Sculpture</h3>
+        <span>2024 AD • Global</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- Museum Grid -->
 <main class="museum-container">
@@ -91,7 +225,7 @@
          data-era="500 BC"
          data-location="Greece"
          data-desc="A classical marble sculpture representing the religious beliefs and craftsmanship of early Greek civilization. This artifact demonstrates remarkable attention to anatomical detail."
-         data-audio="audio/artifact1.mp3">
+         data-audio="a1.mp3">
       
       <div class="artifact-media">
         <img src="a1.png" class="artifact-img" alt="Ancient Greek Sculpture">
@@ -114,6 +248,10 @@
         <div class="artifact-overlay">
           <button class="preview-btn"><i class="fas fa-expand"></i></button>
           <div class="era-badge">Ancient</div>
+          <div class="viewed-badge">
+  <i class="fas fa-check"></i>
+</div>
+
         </div>
       </div>
       
@@ -142,7 +280,7 @@
          data-era="1200 AD"
          data-location="England"
          data-desc="A medieval sword used in royal battles, showcasing advanced metal craftsmanship and symbolic engravings representing royal heritage."
-         data-audio="audio/artifact2.mp3">
+         data-audio="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3">
       
       <div class="artifact-media">
         <img src="a2.png" class="artifact-img" alt="Medieval Sword">
@@ -193,7 +331,7 @@
          data-era="1300 BC"
          data-location="Egypt"
          data-desc="An elaborately decorated sarcophagus from ancient Egypt, featuring hieroglyphics and detailed artwork depicting the journey to the afterlife."
-         data-audio="audio/artifact3.mp3">
+         data-audio="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3">
       
       <div class="artifact-media">
         <img src="a3.png" class="artifact-img" alt="Egyptian Sarcophagus">
@@ -244,7 +382,7 @@
          data-era="1400 AD"
          data-location="France"
          data-desc="Full plate armor worn by French knights during the Hundred Years' War, demonstrating advanced metallurgy and protection design."
-         data-audio="audio/artifact4.mp3">
+         data-audio="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3">
       
       <div class="artifact-media">
         <img src="a4.png" class="artifact-img" alt="Knight's Armor">
@@ -295,7 +433,7 @@
          data-era="100 AD"
          data-location="Italy"
          data-desc="A collection of Roman coins featuring emperors and mythological figures, showing the economic system of the Roman Empire."
-         data-audio="audio/artifact5.mp3">
+         data-audio="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3">
       
       <div class="artifact-media">
         <img src="a5.png" class="artifact-img" alt="Roman Coins">
@@ -346,7 +484,7 @@
          data-era="900 AD"
          data-location="Norway"
          data-desc="A wooden Viking shield with iron boss and painted designs, used for protection in battles and raids across Europe."
-         data-audio="audio/artifact6.mp3">
+         data-audio="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3">
       
       <div class="artifact-media">
         <img src="a6.png" class="artifact-img" alt="Viking Shield">
@@ -397,7 +535,7 @@
          data-era="210 BC"
          data-location="China"
          data-desc="One of thousands of life-sized terracotta figures from the mausoleum of the first Emperor of China, Qin Shi Huang."
-         data-audio="audio/artifact7.mp3">
+         data-audio="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3">
       
       <div class="artifact-media">
         <img src="a7.png" class="artifact-img" alt="Terracotta Warrior">
@@ -448,7 +586,7 @@
          data-era="1250 AD"
          data-location="France"
          data-desc="Stone fragment from Notre-Dame Cathedral featuring intricate Gothic architectural details and religious symbolism."
-         data-audio="audio/artifact8.mp3">
+         data-audio="a3.mp3">
       
       <div class="artifact-media">
         <img src="a8.png" class="artifact-img" alt="Gothic Architecture">
@@ -499,7 +637,7 @@
          data-era="500 AD"
          data-location="Mexico"
          data-desc="Stone carving representing the Mayan calendar system, showing advanced astronomical knowledge and time-keeping methods."
-         data-audio="audio/artifact9.mp3">
+         data-audio="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3">
       
       <div class="artifact-media">
         <img src="a9.png" class="artifact-img" alt="Mayan Calendar">
@@ -550,7 +688,7 @@
          data-era="1500 AD"
          data-location="Italy"
          data-desc="Ornate wooden frame from a Renaissance painting, showcasing the intricate woodworking and gold leaf techniques of the period."
-         data-audio="audio/artifact10.mp3">
+         data-audio="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3">
       
       <div class="artifact-media">
         <img src="a10.png" class="artifact-img" alt="Renaissance Frame">
@@ -601,7 +739,7 @@
          data-era="1800 AD"
          data-location="England"
          data-desc="Massive iron gear from early Industrial Revolution machinery, representing the technological advancements that transformed manufacturing."
-         data-audio="audio/artifact11.mp3">
+         data-audio="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3">
       
       <div class="artifact-media">
         <img src="a11.png" class="artifact-img" alt="Industrial Gear">
@@ -652,7 +790,7 @@
          data-era="1920 AD"
          data-location="USA"
          data-desc="Bronze sculpture from the Art Deco period, characterized by geometric shapes and streamlined forms reflecting modernity and luxury."
-         data-audio="audio/artifact12.mp3">
+         data-audio="a2.mp3">
       
       <div class="artifact-media">
         <img src="a12.png" class="artifact-img" alt="Art Deco Sculpture">
@@ -703,7 +841,7 @@
          data-era="2020 AD"
          data-location="Japan"
          data-desc="Interactive digital art piece that responds to viewer movements, representing the fusion of technology and artistic expression."
-         data-audio="audio/artifact13.mp3">
+         data-audio="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3">
       
       <div class="artifact-media">
         <img src="a13.png" class="artifact-img" alt="Digital Art">
@@ -754,7 +892,7 @@
          data-era="2023 AD"
          data-location="South Korea"
          data-desc="Advanced holographic display system that creates 3D interactive interfaces, demonstrating cutting-edge visualization technology."
-         data-audio="audio/artifact14.mp3">
+         data-audio="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3">
       
       <div class="artifact-media">
         <img src="a14.png" class="artifact-img" alt="Holographic Interface">
@@ -805,7 +943,7 @@
          data-era="2024 AD"
          data-location="Global"
          data-desc="Sculpture created through artificial intelligence algorithms, representing the intersection of machine learning and artistic creation."
-         data-audio="audio/artifact15.mp3">
+         data-audio="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3">
       
       <div class="artifact-media">
         <img src="a15.png" class="artifact-img" alt="AI Sculpture">
@@ -856,7 +994,7 @@
          data-era="2024 AD"
          data-location="USA"
          data-desc="Advanced component from quantum computing systems, representing the future of computational technology and information processing."
-         data-audio="audio/artifact16.mp3">
+         data-audio="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3">
       
       <div class="artifact-media">
         <img src="a.png" class="artifact-img" alt="Quantum Component">
@@ -909,8 +1047,23 @@
     <span class="progress-text">Viewed: <span id="viewedCount">0</span>/16 artifacts</span>
   </div>
 </main>
+<!-- Library Section -->
+<section class="library-section" id="librarySection">
+  <div class="library-header">
+    <h2>📚 My Library</h2>
+    <button class="close-library-btn" id="closeLibraryBtn">✖</button>
+  </div>
 
-<!-- Enhanced Details Panel -->
+  <div class="library-grid" id="libraryGrid">
+    <!-- Library cards injected here -->
+  </div>
+
+  <p class="library-empty" id="libraryEmpty">
+    No artifacts saved yet.
+  </p>
+</section>
+
+<!-- Details Panel -->
 <div class="details-overlay" id="detailsOverlay">
   <div class="details-container">
     <div class="details-header">
@@ -1007,7 +1160,7 @@
           </button>
         </div>
         
-        <div class="nav-controls">
+        <div class="nav-controls-details">
           <button class="nav-arrow" id="prevArtifact">
             <i class="fas fa-chevron-left"></i> Previous
           </button>
@@ -1018,61 +1171,109 @@
         
         <div class="share-controls">
           <button class="share-btn"><i class="fas fa-share-alt"></i> Share</button>
-          <button class="share-btn"><i class="fas fa-bookmark"></i> Save</button>
-          <button class="share-btn"><i class="fas fa-print"></i> Print</button>
+          <button class="action-btn save-btn" id="detailSaveBtn">
+  <i class="fas fa-bookmark"></i> Save
+</button>
+
+          <button class="share-btn" id="printArtifactBtn">
+  <i class="fas fa-print"></i> Print
+</button>
+
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Tour Guide -->
-<div class="tour-guide" id="tourGuide">
-  <div class="guide-header">
-    <h3><i class="fas fa-robot"></i> Museum Guide</h3>
-    <button class="guide-close" id="closeTourBtn">×</button>
+<!-- Virtual Guide -->
+<div class="virtual-guide" id="virtualGuide">
+  <div class="guide-avatar">
+    <div class="avatar-image">
+      <i class="fas fa-robot"></i>
+    </div>
+    <div class="guide-status">
+      <div class="status-indicator"></div>
+      <span>Online</span>
+    </div>
   </div>
   <div class="guide-content">
-    <p id="guideMessage">Welcome to the Future Museum! I'll guide you through the exhibits.</p>
-  </div>
-  <div class="guide-controls">
-    <button class="guide-btn" id="prevGuideBtn">← Back</button>
-    <button class="guide-btn primary" id="nextGuideBtn">Next →</button>
+    <div class="guide-message" id="guideMessage">
+      Hello! I'm your virtual guide. Ready to explore the museum?
+    </div>
+    <div class="guide-actions">
+      <button class="guide-action-btn" id="startTourBtn">
+        <i class="fas fa-play"></i> Start Tour
+      </button>
+      <button class="guide-action-btn" id="skipTourBtn">
+        <i class="fas fa-forward"></i> Skip Tour
+      </button>
+      <button class="guide-action-btn" id="customTourBtn">
+        <i class="fas fa-route"></i> Custom Tour
+      </button>
+    </div>
   </div>
 </div>
 
-<!-- Background Music -->
-<audio id="backgroundMusic" loop>
-  <source src="audio/ambient.mp3" type="audio/mpeg">
-</audio>
-
-<!-- Notification -->
-<div class="notification" id="notification">
-  <i class="fas fa-info-circle"></i>
-  <span id="notificationText"></span>
+<!-- Advanced Tour Controls -->
+<div class="advanced-tour-controls" id="advancedTourControls">
+  <div class="tour-header">
+    <h4><i class="fas fa-map-marked-alt"></i> Guided Tour</h4>
+    <button class="tour-close-btn" id="closeTourControlsBtn">×</button>
+  </div>
+  
+  <div class="tour-progress-container">
+    <div class="progress-circle">
+      <svg width="40" height="40">
+        <circle class="progress-bg" cx="20" cy="20" r="18"></circle>
+        <circle class="progress-fill" cx="20" cy="20" r="18"></circle>
+      </svg>
+      <span id="tourStep">0/16</span>
+    </div>
+    
+    <div class="tour-info">
+      <h5 id="currentTourTitle">Starting Tour...</h5>
+      <p id="currentTourDescription">Prepare for an immersive journey through time</p>
+    </div>
+  </div>
+  
+  <div class="tour-controls">
+    <button class="tour-control-btn" id="tourPrevBtn">
+      <i class="fas fa-step-backward"></i>
+    </button>
+    <button class="tour-control-btn primary" id="tourPlayPauseBtn">
+      <i class="fas fa-pause"></i>
+    </button>
+    <button class="tour-control-btn" id="tourNextBtn">
+      <i class="fas fa-step-forward"></i>
+    </button>
+    <button class="tour-control-btn" id="tourStopBtn">
+      <i class="fas fa-stop"></i>
+    </button>
+  </div>
+  
+  <div class="tour-options">
+    <div class="tour-speed">
+      <label>Speed:</label>
+      <div class="speed-controls">
+        <button class="speed-btn" data-speed="0.5">0.5x</button>
+        <button class="speed-btn active" data-speed="1">1x</button>
+        <button class="speed-btn" data-speed="1.5">1.5x</button>
+        <button class="speed-btn" data-speed="2">2x</button>
+      </div>
+    </div>
+    
+    <div class="tour-mode">
+      <label>Mode:</label>
+      <select id="tourModeSelect">
+        <option value="sequential">Sequential</option>
+        <option value="category">By Category</option>
+        <option value="chronological">Chronological</option>
+        <option value="popular">Most Popular</option>
+      </select>
+    </div>
+  </div>
 </div>
 
-<footer class="footer">
-  <div class="footer-content">
-    <div class="footer-section">
-      <h4>Virtual 3D Museum</h4>
-      <p>Experience history in immersive 3D</p>
-    </div>
-    <div class="footer-section">
-      <h4>Controls</h4>
-      <p>Drag: Rotate • Scroll: Zoom • Click: Select</p>
-    </div>
-    <div class="footer-section">
-      <h4>Technology</h4>
-      <p>Powered by Model Viewer • WebGL • 3D Graphics</p>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2024 Virtual Museum Experience | All artifacts are 3D scanned replicas</p>
-  </div>
-</footer>
-
-<script src="script.js"></script>
 <!-- Fullscreen 3D Viewer -->
 <div class="fullscreen-3d-overlay" id="fullscreen3DOverlay">
   <div class="fullscreen-3d-container">
@@ -1109,7 +1310,8 @@
     </div>
   </div>
 </div>
-<!-- AR Mode Overlay -->
+
+<!-- AR Overlay -->
 <div class="ar-overlay" id="arOverlay">
   <div class="ar-container">
     <div class="ar-header">
@@ -1141,141 +1343,94 @@
   </div>
 </div>
 
-<!-- Transcript Modal -->
-<div class="transcript-modal" id="transcriptModal">
-  <div class="transcript-content">
-    <div class="transcript-header">
-      <h3>Audio Transcript</h3>
-      <button class="transcript-close-btn" id="closeTranscriptBtn">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    <div class="transcript-body" id="transcriptText">
-      Loading transcript...
-    </div>
-  </div>
+<!-- Background Music -->
+<audio id="backgroundMusic" loop>
+  <source src="" type="audio/mpeg">
+</audio>
+<!-- Ambient Era Sounds -->
+<audio id="ambientAncient" loop preload="auto">
+  <source src=".mp3" type="audio/mpeg">
+</audio>
+
+<audio id="ambientMedieval" loop preload="auto">
+  <source src="mp3" type="audio/mpeg">
+</audio>
+
+<audio id="ambientModern" loop preload="auto">
+  <source src=".mp3" type="audio/mpeg">
+</audio>
+
+<audio id="ambientFuturistic" loop preload="auto">
+  <source src="audio/ambient-futuristic.mp3" type="audio/mpeg">
+</audio>
+<audio id="uiClickSound" preload="auto">
+  <source src="audio/click.wav" type="audio/mpeg">
+</audio>
+
+
+
+<!-- Notification -->
+<div class="notification" id="notification">
+  <i class="fas fa-info-circle"></i>
+  <span id="notificationText"></span>
 </div>
 
-<!-- Share Modal -->
-<div class="share-modal" id="shareModal">
-  <div class="share-content">
-    <div class="share-header">
-      <h3>Share Artifact</h3>
-      <button class="share-close-btn" id="closeShareBtn">
-        <i class="fas fa-times"></i>
-      </button>
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h4>Virtual 3D Museum</h4>
+      <p>Experience history in immersive 3D</p>
     </div>
-    <div class="share-options">
-      <button class="share-option" data-share="facebook">
-        <i class="fab fa-facebook-f"></i> Facebook
-      </button>
-      <button class="share-option" data-share="twitter">
-        <i class="fab fa-twitter"></i> Twitter
-      </button>
-      <button class="share-option" data-share="linkedin">
-        <i class="fab fa-linkedin-in"></i> LinkedIn
-      </button>
-      <button class="share-option" data-share="link">
-        <i class="fas fa-link"></i> Copy Link
-      </button>
+    <div class="footer-section">
+      <h4>Controls</h4>
+      <p>Drag: Rotate • Scroll: Zoom • Click: Select</p>
     </div>
-    <div class="share-link">
-      <input type="text" id="shareUrl" readonly>
-      <button class="copy-btn" id="copyShareBtn">
-        <i class="fas fa-copy"></i>
-      </button>
+    <div class="footer-section">
+      <h4>Technology</h4>
+      <p>Powered by Model Viewer • WebGL • 3D Graphics</p>
     </div>
   </div>
-</div>
-<!-- Virtual Guide -->
-<div class="virtual-guide" id="virtualGuide">
-  <div class="guide-avatar">
-    <div class="avatar-image">
-      <i class="fas fa-robot"></i>
-    </div>
-    <div class="guide-status">
-      <div class="status-indicator"></div>
-      <span>Online</span>
-    </div>
+  <div class="footer-bottom">
+    <p>© 2024 Virtual Museum Experience | All artifacts are 3D scanned replicas</p>
   </div>
-  <div class="guide-content">
-    <div class="guide-message" id="guideMessage">
-      Hello! I'm your virtual guide. Ready to explore the museum?
-    </div>
-    <div class="guide-actions">
-      <button class="guide-action-btn" data-action="startTour">
-        <i class="fas fa-play"></i> Start Tour
-      </button>
-      <button class="guide-action-btn" data-action="skipTour">
-        <i class="fas fa-forward"></i> Skip Tour
-      </button>
-      <button class="guide-action-btn" data-action="customTour">
-        <i class="fas fa-route"></i> Custom Tour
-      </button>
-    </div>
-  </div>
-</div>
+</footer>
 
-<!-- Advanced Tour Controls -->
-<div class="advanced-tour-controls" id="advancedTourControls" style="display: none;">
-  <div class="tour-header">
-    <h4><i class="fas fa-map-marked-alt"></i> Guided Tour</h4>
-    <div class="tour-progress">
-      <div class="progress-circle">
-        <svg width="40" height="40">
-          <circle class="progress-bg" cx="20" cy="20" r="18"></circle>
-          <circle class="progress-fill" cx="20" cy="20" r="18"></circle>
-        </svg>
-        <span id="tourStep">0/16</span>
-      </div>
-    </div>
+<script src="script.js"></script>
+
+<div class="save-toast" id="saveToast">
+  <i class="fas fa-check-circle"></i>
+  Artifact saved to library
+</div>
+<!-- 🔍 Advanced Search Panel -->
+<section class="search-panel" id="searchPanel">
+  <div class="search-header">
+    <h2>Search Artifacts</h2>
+    <button class="close-search-btn" id="closeSearchBtn">✖</button>
   </div>
-  
-  <div class="tour-info">
-    <h5 id="currentTourTitle">Starting Tour...</h5>
-    <p id="currentTourDescription">Prepare for an immersive journey through time</p>
-  </div>
-  
-  <div class="tour-controls">
-    <button class="tour-control-btn" id="tourPrev">
-      <i class="fas fa-step-backward"></i>
+
+  <div class="search-body">
+    <input type="text" id="advancedSearchInput" placeholder="Search by title, description, location...">
+
+    <select id="searchEra">
+      <option value="">All Eras</option>
+      <option value="ancient">Ancient</option>
+      <option value="medieval">Medieval</option>
+      <option value="modern">Modern</option>
+    </select>
+
+    <select id="searchCategory">
+      <option value="">All Categories</option>
+      <option value="sculpture">Sculpture</option>
+      <option value="painting">Painting</option>
+      <option value="artifact">Artifact</option>
+    </select>
+
+    <button id="resetSearchBtn" class="search-reset-btn">
+      Reset Search
     </button>
-    <button class="tour-control-btn primary" id="tourPlayPause">
-      <i class="fas fa-pause"></i>
-    </button>
-    <button class="tour-control-btn" id="tourNext">
-      <i class="fas fa-step-forward"></i>
-    </button>
-    <button class="tour-control-btn" id="tourStop">
-      <i class="fas fa-stop"></i>
-    </button>
-  </div>
-  
-  <div class="tour-options">
-    <div class="tour-speed">
-      <label>Speed:</label>
-      <div class="speed-controls">
-        <button class="speed-btn" data-speed="0.5">0.5x</button>
-        <button class="speed-btn active" data-speed="1">1x</button>
-        <button class="speed-btn" data-speed="1.5">1.5x</button>
-        <button class="speed-btn" data-speed="2">2x</button>
-      </div>
-    </div>
     
-    <div class="tour-mode">
-      <label>Mode:</label>
-      <select id="tourMode">
-        <option value="sequential">Sequential</option>
-        <option value="category">By Category</option>
-        <option value="chronological">Chronological</option>
-        <option value="popular">Most Popular</option>
-        <option value="interactive">Interactive</option>
-      </select>
-    </div>
   </div>
-</div>
+</section>
 
-<!-- Interactive Hotspots -->
-<div class="hotspots-container" id="hotspotsContainer"></div>
 </body>
 </html>
